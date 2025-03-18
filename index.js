@@ -17,23 +17,23 @@ app.get("/webhook", (req, res) => {
 
 // ✅ Webhook to receive messages
 app.post("/webhook", (req, res) => {
-  //   console.log(
-  //     "📩 Received WhatsApp message:",
-  //     JSON.stringify(req.body, null, 2)
-  //   );
+  console.log(
+    "📩 Received WhatsApp message:",
+    JSON.stringify(req.body, null, 2)
+  );
 
-  //   if (req.body.entry) {
-  //     const messageData = req.body.entry[0].changes[0].value;
+  if (req.body.entry) {
+    const messageData = req.body.entry[0].changes[0].value;
 
-  //     if (messageData.messages) {
-  //       const from = messageData.messages[0].from; // User phone number
-  //       const text = messageData.messages[0].text.body; // User message
+    if (messageData.messages) {
+      const from = messageData.messages[0].from; // User phone number
+      const text = messageData.messages[0].text.body; // User message
 
-  //       console.log(`📩 Message from ${from}: "${text}"`);
+      console.log(`📩 Message from ${from}: "${text}"`);
 
-  //       sendWhatsAppMessage(from, "Hello! This is an automated reply 😊");
-  //     }
-  //   }
+      sendWhatsAppMessage(from, "Hello! This is an automated reply 😊");
+    }
+  }
 
   //   res.sendStatus(200);
   res.status(200).json({
